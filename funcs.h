@@ -38,7 +38,7 @@ template<class T>
 T* joinFunc(T* A, T* B, int M, int N)
 {
 	int size, k = 0;
-	bool check_var;
+	bool fc_var, sc_var;
 	if (M < N || M == N)
 	{
 		size = M;
@@ -54,20 +54,15 @@ T* joinFunc(T* A, T* B, int M, int N)
 	}
 	for (int i = 0; i < M; i++)
 	{
-		for (int j = 0; j < N; j++)
+		fc_var = checkFunc(B, N, A[i]);
+		sc_var = checkFunc(j_array, size, A[i]);
+		if (fc_var && sc_var)
 		{
-			if (A[i] == B[j])
-			{
-				check_var = checkFunc(j_array, k, A[i]);
-				if (check_var)
-				{
-					j_array[k] = A[i];
-					k++;
-				}
-				else
-					break;
-			}
+			j_array[k] = A[i];
+			k++;
 		}
+		else
+			continue;
 	}
 	return j_array;
 }
