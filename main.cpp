@@ -3,7 +3,7 @@
 int main()
 {
 	srand(time(NULL));
-	int M, N;
+	int M, N, size;
 	cout << "Size of 1-st array:";
 	cin >> M;
 	cout << "Size of 2-nd array:";
@@ -15,7 +15,15 @@ int main()
 	cout << "2-nd array: " << endl;
 	printArr<int>(B, N);
 	int* C = joinFunc<int>(A, B, M, N);
-	printArr<int>(C, M + N);
+	if (M > N || M == N)
+	{
+		size = M;
+	}
+	else if (N > M)
+	{
+		size = N;
+	}
+	printArr<int>(C, size);
 	delete[] A;
 	delete[] B;
 	delete[] C;

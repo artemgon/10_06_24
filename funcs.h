@@ -1,25 +1,6 @@
 #include "libs.h" 
 
 template<class T>
-T* joinFunc(T* p_array_1, T* p_array_2, int M, int N)
-{
-	T* j_array = new T[M + N];
-	for (int i = 0, j = 0; i < M + N; i++)
-	{
-		if (i < M)
-		{
-			j_array[i] = p_array_1[i];
-		}
-		else
-		{
-			j_array[i] = p_array_2[j];
-			j++;
-		}
-	}
-	return j_array;
-}
-
-template<class T>
 T* randomArr(int size)
 {
 	T* new_array = new T[size];
@@ -37,4 +18,56 @@ void printArr(T* array, int size)
 		cout << array[i] << " ";
 	}
 	cout << endl;
+}
+template<class T>
+bool checkFunc(T* array, int size, T elem)
+{
+	bool c_var = true;
+	for (int i = 0; i < size; i++)
+	{
+		if (array[i] == elem)
+		{
+			c_var = false;
+			break;
+		}
+	}
+	return c_var;
+}
+
+template<class T>
+T* joinFunc(T* A, T* B, int M, int N)
+{
+	int size, k = 0;
+	bool check_var;
+	if (M > N || M == N)
+	{
+		size = M;
+	}
+	else if (N > M)
+	{
+		size = N;
+	}
+	T* j_array = new T[size];
+	for (int i = 0; i < size; i++)
+	{
+		j_array[i] = -1;
+	}
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			if (A[i] == B[j])
+			{
+				check_var = checkFunc(j_array, k, A[i]);
+				if (check_var)
+				{
+					j_array[k] = A[i];
+					k++;
+				}
+				else
+					break;
+			}
+		}
+	}
+	return j_array;
 }
