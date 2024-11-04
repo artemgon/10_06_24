@@ -39,11 +39,11 @@ T* joinFunc(T* A, T* B, int M, int N)
 {
 	int size, k = 0;
 	bool check_var;
-	if (M > N || M == N)
+	if (M < N || M == N)
 	{
 		size = M;
 	}
-	else if (N > M)
+	else
 	{
 		size = N;
 	}

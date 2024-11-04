@@ -15,11 +15,11 @@ int main()
 	cout << "2-nd array: " << endl;
 	printArr<int>(B, N);
 	int* C = joinFunc<int>(A, B, M, N);
-	if (M > N || M == N)
+	if (M < N || M == N)
 	{
 		size = M;
 	}
-	else if (N > M)
+	else
 	{
 		size = N;
 	}
